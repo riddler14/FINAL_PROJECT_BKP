@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y \
 
     RUN apt-get update && apt-get install -y \
     libpq-dev \
-    postgresql-dev \
-    ...
+    postgresql-dev
+    
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
