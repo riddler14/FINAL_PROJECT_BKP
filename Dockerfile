@@ -1,13 +1,25 @@
 FROM php:8.1-fpm
 
-# Update package lists
-RUN apt-get update
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    postgresql-client \
+    curl \
+    ca-certificates \
+    build-essential \
+    git
 
-# Install dependencies
-RUN apt-get install -y libpq-dev postgresql-client curl ca-certificates
-
-# Install PHP extensions with detailed logging
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd --log-level=debug
+# Install PDO and other extensions manually
+RUN docker-php-source extract && \
+    cd /usr/src/php/ext/pdo && \
+    ./configure && make && make install && \
+    cd /usr/src/php/ext/pdo_mysql && \
+    ./configure && make && make install && \
+    cd /usr/src/php/ext/pdo_pgsql && \
+    ./configure && make && make install && \
+    cd /usr/src/php/ext/gd && \
+    ./configure && make && make install && \
+    docker-php-source delete
 
 # Clean up cached files to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
