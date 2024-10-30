@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.0-fpm
 
 # Install necessary packages
 RUN apt-get update && apt-get install -y \
@@ -7,13 +7,11 @@ RUN apt-get update && apt-get install -y \
     curl \
     ca-certificates \
     build-essential \
-    git
+    git \
+    zlib1g-dev
 
-# Install PHP extensions using PECL
-RUN pecl install pdo pdo_mysql pdo_pgsql gd
-
-# Enable the installed extensions
-RUN docker-php-ext-enable pdo pdo_mysql pdo_pgsql gd
+# Install PDO and other extensions
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
 
 # Clean up cached files to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
