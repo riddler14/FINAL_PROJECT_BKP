@@ -9,8 +9,11 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     git
 
-# Install PHP extensions manually
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
+# Install PHP extensions using PECL
+RUN pecl install pdo pdo_mysql pdo_pgsql gd
+
+# Enable the installed extensions
+RUN docker-php-ext-enable pdo pdo_mysql pdo_pgsql gd
 
 # Clean up cached files to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
