@@ -3,6 +3,8 @@ FROM php:8.0-fpm
 # Install necessary packages
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
     postgresql-client \
     curl \
     ca-certificates \
@@ -10,8 +12,9 @@ RUN apt-get update && apt-get install -y \
     git \
     zlib1g-dev
 
-# Install PDO and other extensions
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
+# Configure and install PHP extensions
+RUN docker-php-ext-configure gd --with-jpeg && \
+    docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
 
 # Clean up cached files to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
