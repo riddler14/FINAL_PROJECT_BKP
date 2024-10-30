@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: laravel-app
+    env: docker
+    region: Singapore  # Choose your preferred region
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        value: base64:KSCOQZe1oGdujhCqfW3gjmy5P2t77Lb1YtAsRjrFnEU=
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        value: dpg-csh83ilumphs73c27n8g-a
+      - key: DB_PORT
+        value: 5432
+      - key: DB_DATABASE
+        value: pharmacylaravel
+      - key: DB_USERNAME
+        value: pharmacylaravel_8knw_user
+      - key: DB_PASSWORD
+        value: STjNW4L2FSuLEsW2d6K9VXOq6sbCrLu9
+    buildCommand: "composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache"
+    startCommand: "php artisan serve --host=0.0.0.0 --port=80"
