@@ -12,11 +12,17 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
+    libpq-dev \ 
+    postgresql-dev \
     curl
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_pgsql
+RUN docker-php-ext-install gd
+
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
