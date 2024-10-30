@@ -12,9 +12,12 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
-    libpq-dev \ 
-    postgresql-dev \
     curl
+
+    RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    postgresql-dev \
+    ...
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
