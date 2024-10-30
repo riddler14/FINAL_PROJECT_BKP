@@ -6,8 +6,8 @@ RUN apt-get update
 # Install dependencies
 RUN apt-get install -y libpq-dev postgresql-client curl ca-certificates
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
+# Install PHP extensions with detailed logging
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd --log-level=debug
 
 # Clean up cached files to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
