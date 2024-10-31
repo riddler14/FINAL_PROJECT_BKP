@@ -29,8 +29,8 @@ WORKDIR /var/www/html
 # Copy the application code into the container
 COPY . /var/www/html
 
-# Install Composer dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Install Composer dependencies with verbose logging
+RUN composer install --no-dev --optimize-autoloader --verbose
 
 # Run Laravel commands to cache configuration and routes
 RUN php artisan config:cache
