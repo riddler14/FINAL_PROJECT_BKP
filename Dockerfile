@@ -44,4 +44,4 @@ RUN php artisan route:cache
 EXPOSE 10000
 
 # Define the command to start the application
-CMD ["php-fpm"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
