@@ -8,6 +8,8 @@ services:
     envVars:
       - key: APP_ENV
         value: production
+      - key: APP_URL
+        value: https://final-project-bkp.onrender.com
       - key: APP_DEBUG
         value: false
       - key: APP_KEY
