@@ -41,7 +41,7 @@ RUN php artisan config:cache
 RUN php artisan route:cache
 
 # Expose the port that the application will run on
-EXPOSE 80
+EXPOSE 10000
 
 # Define the command to start the application
 CMD ["php-fpm"]
