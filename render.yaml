@@ -11,7 +11,7 @@ services:
       - key: APP_URL
         value: https://final-project-bkp.onrender.com
       - key: APP_DEBUG
-        value: false
+        value: true
       - key: APP_KEY
         value: base64:KSCOQZe1oGdujhCqfW3gjmy5P2t77Lb1YtAsRjrFnEU=
       - key: DB_CONNECTION
@@ -21,7 +21,7 @@ services:
       - key: DB_PORT
         value: 5432
       - key: DB_DATABASE
-        value: pharmacylaravel
+        value: pharmacylaravel_8knw
       - key: DB_USERNAME
         value: pharmacylaravel_8knw_user
       - key: DB_PASSWORD

@@ -78,7 +78,7 @@ return [
             'url' => env('postgresql://pharmacylaravel_8knw_user:STjNW4L2FSuLEsW2d6K9VXOq6sbCrLu9@dpg-csh83ilumphs73c27n8g-a/pharmacylaravel_8knw'),
             'host' => env('DB_HOST', 'dpg-csh83ilumphs73c27n8g-a'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'pharmacylaravel'),
+            'database' => env('DB_DATABASE', 'pharmacylaravel_8knw'),
             'username' => env('DB_USERNAME', 'pharmacylaravel_8knw_user'),
             'password' => env('DB_PASSWORD', 'STjNW4L2FSuLEsW2d6K9VXOq6sbCrLu9'),
             'charset' => 'utf8',
