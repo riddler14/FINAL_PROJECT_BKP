@@ -1,7 +1,8 @@
 FROM php:8.0-fpm
 
 # Install necessary packages
-RUN libpq-dev \
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
     postgresql-client \
