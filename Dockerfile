@@ -43,5 +43,11 @@ RUN php artisan route:cache
 # Expose the port that the application will run on
 EXPOSE 10000
 
+# Create an entrypoint script
+ COPY entrypoint.sh /usr/local/bin/ 
+ RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Use the entrypoint script to run migrations and start the server
+
 # Define the command to start the application
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+CMD ["/usr/local/bin/entrypoint.sh"]
