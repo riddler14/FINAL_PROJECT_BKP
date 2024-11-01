@@ -62,6 +62,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::delete('backup/delete/{file_name?}', [BackupController::class,'destroy'])->where('file_name', '(.*)')->name('backup.destroy');
 
     Route::get('settings',[SettingController::class,'index'])->name('settings');
+    Route::post('settings', [SettingController::class, 'store'])->name('settings.store');
 });
 
 Route::middleware(['guest'])->prefix('admin')->group(function () {
