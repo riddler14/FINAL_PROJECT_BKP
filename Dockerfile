@@ -38,7 +38,12 @@ RUN composer install --no-dev --optimize-autoloader --verbose --prefer-dist
 
 # Run Laravel commands to cache configuration and routes
 RUN php artisan config:cache
+RUN php artisan storage:link
 RUN php artisan route:cache
+
+
+
+
 
 # Expose the port that the application will run on
 EXPOSE 10000
