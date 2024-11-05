@@ -4,12 +4,8 @@
   ],
   "hints": {
     "compat-api/css": [
-      "default",
-      {
-        "ignore": [
-          "-webkit-text-size-adjust"
-        ]
-      }
+      "default"
+      
     ]
   }
 }
