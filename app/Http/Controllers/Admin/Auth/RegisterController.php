@@ -18,7 +18,7 @@ class RegisterController extends Controller
         $this->validate($request ,[
             'name'=>'required|max:100',
             'email'=>'required|email',
-            'password'=>'required|max:200|confirmed',
+            'password'=>'required|min:8|max:200|confirmed',
         ]);
         
         $user = User::create([
@@ -29,5 +29,11 @@ class RegisterController extends Controller
         $user->assignRole('sales-person');
         auth()->attempt($request->only('email','password'));
         return redirect()->route('dashboard');
+    }
+
+    public function messages(){
+        return[
+            'password.min'=>'The Password must be at least 8 characters',
+        ];
     }
 }
