@@ -38,8 +38,10 @@ RUN composer install --no-dev --optimize-autoloader --verbose --prefer-dist
 
 # Run Laravel commands to cache configuration and routes
 RUN php artisan config:cache
-RUN php artisan storage:link
 RUN php artisan route:cache
+RUN php artisan view:cache
+RUN php artisan cache:clear
+
 
 
 
@@ -51,6 +53,8 @@ EXPOSE 10000
 # Create an entrypoint script
  COPY entrypoint.sh /usr/local/bin/ 
  RUN chmod +x /usr/local/bin/entrypoint.sh
+ RUN chmod -R 775 storage
+ RUN chmod -R 775 public/storage
 
 # Use the entrypoint script to run migrations and start the server
 
