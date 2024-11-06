@@ -198,7 +198,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'current_password'=>'required',
-            'password'=>'required|max:200|confirmed',
+            'password'=>'required|min:8|max:200|confirmed',
         ]);
         $verify_password = password_verify($request->current_password, $user->password);
         if ($verify_password) {
